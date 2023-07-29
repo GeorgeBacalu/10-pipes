@@ -8,9 +8,9 @@
       <button class="btn btn-primary" (click)="onAddServer()">Add Server</button>
       <h4>App Status: {{ appStatus | async }}</h4>
       <ul class="list-group">
-        <li class="list-group-item" [ngClass]="getStatusClasses(server)" *ngFor="let server of servers | filter: filteredStatus: 'status'">
+        <li class="list-group-item" [ngClass]="getStatusClasses(server)" *ngFor="let server of servers | filter: filteredStatus: 'status' | sort: 'name'">
           <span class="badge">{{ server.status }}</span>
-          <strong>{{ server.name | shorten: 15 }}</strong> | {{ server.instanceType | uppercase }} | {{ server.started | date: "fullDate" | uppercase }}
+          <strong>{{ server.name | shorten: 15 }}</strong> | {{ server.instanceType | uppercase | reverse }} | {{ server.started | date: "fullDate" | uppercase }}
         </li>
       </ul>
     </div>
